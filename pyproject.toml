@@ -1,6 +1,6 @@
 [project]
 name = "mcp-worklog"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP 服务：自动化生成和管理工作日报"
 readme = "README.md"
 requires-python = ">=3.10"
