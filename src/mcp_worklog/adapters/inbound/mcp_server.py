@@ -178,7 +178,11 @@ def create_mcp_server(service: WorklogService) -> Server:
             else:
                 lines.append("")
                 lines.append("---")
-                lines.append("[完成] 所有会话内容已显示完毕。请根据以上所有内容总结今日工作，然后调用 append_worklog 添加到日报")
+                lines.append("[完成] 所有会话内容已显示完毕。请根据以上所有内容总结今日工作：")
+                lines.append("- 每条工作内容需要分析完成度百分比（0-100%）")
+                lines.append("- 格式示例：完成了用户登录功能开发 [80%]")
+                lines.append("- 不要加序号，系统会自动编号")
+                lines.append("- 然后调用 append_worklog 逐条添加到日报")
 
             return [TextContent(type="text", text="\n".join(lines))]
 
