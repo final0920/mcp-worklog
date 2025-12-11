@@ -2,5 +2,6 @@
 
 from .formatter import DigestFormatter
 from .models import DailyDigest, WorkLogEntry
+from .session import AISession, SessionSource
 
-__all__ = ["WorkLogEntry", "DailyDigest", "DigestFormatter"]
+__all__ = ["WorkLogEntry", "DailyDigest", "DigestFormatter", "AISession", "SessionSource"]

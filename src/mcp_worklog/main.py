@@ -7,6 +7,11 @@ from pathlib import Path
 from mcp.server.stdio import stdio_server
 
 from mcp_worklog.adapters.inbound.mcp_server import create_mcp_server
+from mcp_worklog.adapters.outbound.session_collectors import (
+    ClaudeCodeCollector,
+    CursorCollector,
+    KiroCollector,
+)
 from mcp_worklog.adapters.outbound.storage import LocalFileStorage
 from mcp_worklog.application import WorklogService
 
@@ -14,7 +19,8 @@ from mcp_worklog.application import WorklogService
 async def run_server(storage_path: Path) -> None:
     """运行 MCP Server"""
     storage = LocalFileStorage(storage_path)
-    service = WorklogService(storage)
+    session_collectors = [ClaudeCodeCollector(), KiroCollector(), CursorCollector()]
+    service = WorklogService(storage, session_collectors)
     server = create_mcp_server(service)
 
     async with stdio_server() as (read_stream, write_stream):

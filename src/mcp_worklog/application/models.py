@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+from mcp_worklog.domain.session import AISession
+
 
 @dataclass
 class AppendResult:
@@ -32,3 +34,23 @@ class PolishResult:
     content: str
     original_count: int
     polished_count: int
+
+
+@dataclass
+class SessionCollectResult:
+    """会话采集结果"""
+
+    date: str
+    sessions: list[AISession]
+    total_count: int
+
+
+@dataclass
+class RewriteResult:
+    """重写日报的结果"""
+
+    success: bool
+    date: str
+    content: str
+    entry_count: int
+    message: str
